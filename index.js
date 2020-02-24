@@ -59,19 +59,18 @@ const process = Object.defineProperties(
       return lazy('title', GLib.get_prgname());
     },
     get version() {
-      return lazy('version', require('cgjs/package.json').version);
+      return lazy('version', GJSIFY_VERSION);
     },
     get versions() {
       return lazy('versions', Object.assign(
         {cgjs: process.version},
-        require('cgjs/package.json').dependencies
+        GJSIFY_DEPS,
       ));
     },
 
     // methods
     abort() {
       process.emit('abort');
-      imports.cgjs.mainloop.quit();
       System.exit(1);
     },
     cwd() {
@@ -79,7 +78,6 @@ const process = Object.defineProperties(
     },
     exit(status) {
       process.emit('exit', status);
-      imports.cgjs.mainloop.quit();
       System.exit(status || 0);
     },
     nextTick() {

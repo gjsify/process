@@ -1,6 +1,6 @@
 {
   "name": "@gjsify/process",
-  "version": "0.0.1",
+  "version": "0.0.1b",
   "description": "process core module for gjs",
   "scripts": {
     "test": "cgjs ./test --foo bar"
